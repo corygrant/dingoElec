@@ -6,6 +6,17 @@
 
 Documentation repo for dingoElectronics projects
 
+- Hardware: 
+    - [dingoPDM](https://github.com/corygrant/dingoPDM) 
+    - [dingoPDM-Max](https://github.com/corygrant/dingoPDM-Max)
+    - [CANBoard](https://github.com/corygrant/CANBoard)
+    - [LINBoard](https://github.com/corygrant/LINBoard)
+- Firmware: 
+    - [dingoFW](https://github.com/corygrant/dingoFW)
+- Software: 
+    - [dingoConfig](https://github.com/corygrant/dingoConfig)
+
+
 # [**Documentation**](https://corygrant.github.io/dingoElec/)
 
 # [**Store**](https://dingo-electronics.square.site/)
