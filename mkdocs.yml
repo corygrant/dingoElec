@@ -1,0 +1,118 @@
+site_name: dingoElectronics
+site_url: https://corygrant.github.io/dingoElec/
+use_directory_urls: true
+theme:
+  name: material
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.footer
+    - navigation.expand
+    - navigation.path
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette: 
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: grey
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: grey
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode  
+repo_url: https://github.com/corygrant/dingoPDM
+repo_name: corygrant/dingoPDM
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.com/invite/TxnPYQkVu3
+    - icon: fontawesome/brands/facebook
+      link: http://facebook.com/dingo.elec
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.keys
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: vegalite
+          class: vegalite
+          format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg  
+  - pymdownx.tasklist:
+      custom_checkbox: true   
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
+  - javascripts/extra.js
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - glightbox
+  - search
+  - macros
+  - charts
+nav:
+  - Getting Started:
+    - Introduction: 'gettingstarted/introduction.md'
+  - dingoPDM:
+    - PCB: 'dingopdm/pcb.md'
+    - Connections: 'dingopdm/connections.md'
+    - Case: 'dingopdm/case.md'
+    - Thermal: 'dingopdm/thermal.md'
+  - dingoConfig:
+    - Introduction: 'dingoconfig/introduction.md'
+    - ToolBar: 'dingoconfig/toolbar.md'
+    - DeviceTree: 'dingoconfig/devicetree.md'
+    - MessageList: 'dingoconfig/messagelist.md'
+    - dingoPDM: 'dingoconfig/dingopdm.md'
+    - CANBoard: 'dingoconfig/canboard.md'
+    - CANMsgLog: 'dingoconfig/msglog.md'
+  - dingoFW:
+    - Introduction: 'dingofw/introduction.md'
+    - Design: 'dingofw/design.md'
+    - CAN: 'dingofw/can.md'
+    - LEDs: 'dingofw/leds.md' 
+    - Wipers: 'dingofw/wipers.md'
+    - Keypad: 'dingofw/keypad.md'
+    - Configuration: 'dingofw/configuration.md'
+    - Variable Mapping: 'dingofw/variablemap.md'
+    - Errors: 'dingofw/errors.md'
+    - Sleep: 'dingofw/sleep.md'
+    - Updating: 'dingofw/updating.md'
+    - Customization: 'dingofw/custom.md'
+    - Build: 'dingofw/build.md'
+  - CANBoard:
+    - Introduction: 'canboard/introduction.md'  
+  - LINBoard:
+    - Introduction: 'linboard/introduction.md'
+  - Custom:
+    - Introduction: 'custom/introduction.md'
