@@ -4,7 +4,6 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/corygrant/dingoPDM)](https://github.com/corygrant/dingoPDM/commits/master/)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/corygrant/dingoPDM)](https://github.com/corygrant/dingoPDM/issues)
 
-# Introduction
 
 ![PCB Design](../images/DingoPDM_PCB_Layout_V7_2.png)
 

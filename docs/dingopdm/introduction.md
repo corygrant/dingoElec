@@ -1,5 +1,8 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=HDE8YCVY9NR2L)
 [![Discord](https://img.shields.io/discord/1243358184266010667?label=discord)](https://discord.com/invite/TxnPYQkVu3)
+[![GitHub Release](https://img.shields.io/github/v/release/corygrant/dingoPDM?include_prereleases&display_name=tag)](https://github.com/corygrant/dingoPDM/releases)
+[![GitHub last commit](https://img.shields.io/github/last-commit/corygrant/dingoPDM)](https://github.com/corygrant/dingoPDM/commits/master/)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/corygrant/dingoPDM)](https://github.com/corygrant/dingoPDM/issues)
 
 ## What Is It?
 
@@ -68,3 +71,11 @@ The CAN Base ID default value is 2000.
 To change this, modify the value in the [DeviceTree](../software/devicetree.md) and press `Update` and then `Burn` to save the setting. 
 
 On the next power up, the CAN Base ID will be updated. 
+
+![Full1](images/Full1.jpg)
+
+![Full2](images/Full2.jpg)
+
+![PCB1](images/PCB1.jpg)
+
+![PCB2](images/PCB2.jpg)
