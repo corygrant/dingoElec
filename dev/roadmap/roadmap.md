@@ -38,6 +38,8 @@ Some of the design constraints/decisions:
   
 ### dingoIO `v1`
 
+![dingoIO](./images/dingoIO.png)
+
 - `v1.0 boards arriving October 13th`
 - 60 pin header
 - Size of 2x CANBoards (40mmx80mm)
