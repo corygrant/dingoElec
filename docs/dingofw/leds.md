@@ -1,3 +1,6 @@
+# LEDs
+
+dingoPDM and dingoPDM-Max have 3 LEDs, visible through the case light pipes. CANBoard does not have status LEDs.
 
 ## `V` - Power
 
@@ -31,6 +34,6 @@ See [Error State](./errors.md) for more information.
 |    :green_square:    |           :black_large_square:           |                    :black_large_square:                    |  `Sleep`   | Device sleep                                       |
 |    :green_square:    |              :green_square:              |                    :black_large_square:                    |   `Run`    | Device operating properly                          |
 |    :green_square:    | :green_square: :fontawesome-solid-burst: |                    :black_large_square:                    |   `Run`    | Output overcurrent detected                        |
-|    :green_square:    | :green_square: :fontawesome-solid-burst: |                        :red_square:                        |   `Run`    | Output overcurrent count limit reached             |
-|    :green_square:    | :green_square: :fontawesome-solid-burst: |          :red_square:  :fontawesome-solid-burst:           | `Overtemp` | Device overtemp reached (State=`Overtemp`)         |
+|    :green_square:    | :green_square: :fontawesome-solid-burst: |                        :red_square:                        |   `Run`    | Output fault (reset limit reached or hardware fault) |
+|    :green_square:    | :green_square: :fontawesome-solid-burst: |          :red_square:  :fontawesome-solid-burst:           | `Overtemp` | Board temperature over 55°C (State=`OverTemp`)     |
 |    :green_square:    |           :black_large_square:           | :red_square: :fontawesome-solid-burst::octicons-number-24: |  `Error`   | Blink error number, see [Error State](./errors.md) |

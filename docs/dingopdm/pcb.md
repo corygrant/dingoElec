@@ -16,7 +16,7 @@ There are two official dingoElectronics versions of dingoPDM, standard and Max.
 - ***dingoPDM-Max***
     - 4 high current outputs
 
-Other custom PDMs from others utilize dingoFW and dingoConfig with custom hardware designs, such as the [PT Motorsport PT-DPDM](https://www.ptmotorsport.com.au/product/pt-motorsport-dpdm4)
+Custom PDMs can also use dingoFW and dingoConfig, see [Custom Devices](../custom/introduction.md)
 
 ## Components
 
@@ -52,7 +52,8 @@ Other custom PDMs from others utilize dingoFW and dingoConfig with custom hardwa
 
 ## KiCad
 
-* Designed using `KiCad v8.0.4`
+* Designed using `KiCad 10`
+* Schematics (PDF), STEP files and gerbers for each version are in the `Export` folder of the [dingoPDM](https://github.com/corygrant/dingoPDM/tree/master/Export) and [dingoPDM-Max](https://github.com/corygrant/dingoPDM-Max/tree/main/Export) repos
 
 ## Design Notes
 
@@ -84,7 +85,7 @@ Other custom PDMs from others utilize dingoFW and dingoConfig with custom hardwa
 | `PA14`  | SWCLK                         |                |
 | `PA15`  | -                             | -              |
 | `PB0`   | Output 5/6 Sense Enable (DEN) | Digital Output |
-| `PB1`   | Output 1 Control Input (IN)   | Digital Output |
+| `PB1`   | Output 5 Control Input (IN)   | Digital Output |
 | `PB2`   | Output 1 Sense Enable (DEN)   | Digital Output |
 | `PB3`   | SWO                           |                |
 | `PB4`   | -                             | -              |
@@ -98,8 +99,8 @@ Other custom PDMs from others utilize dingoFW and dingoConfig with custom hardwa
 | `PB13`  | -                             | -              |
 | `PB14`  | Output 3/4 Sense Select (DSEL)| Digital Output |
 | `PB15`  | Output 3/4 Sense Enable (DEN) | Digital Output |
-| `PC0`   | Status LED                    | Digital Output |
-| `PC1`   | Error LED                     | Digital Output |
+| `PC0`   | Error LED                     | Digital Output |
+| `PC1`   | Status LED                    | Digital Output |
 | `PC2`   | Output 2 Current Sense (IS)   | Analog Input   |
 | `PC3`   | Output 3/4 Current Sense (IS) | Analog Input   |
 | `PC4`   | Output 6 Control Input (IN)   | Digital Output |
@@ -153,11 +154,11 @@ Other custom PDMs from others utilize dingoFW and dingoConfig with custom hardwa
 | `PB13`  | Output 1 Sense Enable (DEN)   | Digital Output |
 | `PB14`  | Output 1 Control Input (IN)   | Digital Output |
 | `PB15`  | -                             |                |
-| `PC0`   | Status LED                    | Digital Output |
-| `PC1`   | Error LED                     | Digital Output |
+| `PC0`   | Error LED                     | Digital Output |
+| `PC1`   | Status LED                    | Digital Output |
 | `PC2`   | Output 2 Current Sense (IS)   | Analog Input   |
 | `PC3`   | Output 1 Current Sense (IS)   | Analog Input   |
-| `PC4`   | -                             | Digital Output |
+| `PC4`   | -                             | -              |
 | `PC5`   | Output 3 Sense Enable (DEN)   | Digital Output |
 | `PC6`   | Output 2 Sense Enable (DEN)   | Digital Output |
 | `PC7`   | Output 2 Control Input (IN)   | Digital Output |

@@ -1,70 +1,55 @@
-## Introduction
+# Configuration Storage
 
-To enable changes to the dingoPDM configuration and to persist those changes across a power cycle dingoPDM uses a configuration struct that is read from and written to FRAM over I2C. 
+The device configuration is a list of [parameters](./can.md#parameters). The saved copy is stored with a version number and a CRC32 checksum so the firmware can tell if it is valid.
+
+| Device                          | Storage |
+| ------------------------------- | ------- |
+| dingoPDM, dingoPDM-Max          | External FRAM over I2C |
+| CANBoard                        | Internal MCU flash |
 
 ## Read
 
-When dingoPDM is powered on, the first thing it does after initializing ChibiOS and I2C is read the configuration from FRAM over I2C. 
+On power up, after starting ChibiOS and I2C, the firmware reads the configuration:
 
-Read sequence:
+1. Read the configuration starting at address 0
+2. Check that the stored version matches the version the firmware expects
+3. Read the CRC32 stored right after the configuration
+4. Calculate the CRC32 of the configuration that was read and check that it matches
+5. Continue starting up
 
-1. Check the FRAM I2C communication and chip IDs (manufacturer and product ID)
-2. Read the configuration starting at address 0
-3. Check the version number stored in the configuration matches the current configuration
-4. Read the configuration checksum stored at the memory address immediatley following the end of the configuration
-5. Calculate the configuration checksum for the current configuration read from FRAM
-6. Verify that the checksum stored in FRAM matches the one calculated from the configuration stored in FRAM
-7. Continue intialization
+## Read Failure
+
+If any read step fails (no configuration saved, configuration from a different firmware version, or a bad CRC):
+
+1. All parameters are set to their default values
+2. The default configuration is written to memory
+    - If the write fails, the device goes to the [error state](./errors.md) with error `4` (Configuration)
+3. The device continues starting up with the default configuration
+
+!!! Info
+    Some firmware updates change the configuration format. After one of those updates, the saved configuration no longer matches and the device starts with the default (blank) configuration.
+
+    Write your configuration back to the device with dingoConfig (`Write All`, then `Burn`). Keep a [config file](../dingoconfig/configfiles.md) saved so this is quick.
 
 ## Updating
 
-The values of the dingoPDM configuration are updated using CAN or USB messages. 
-
-The format of these messages can be found in [CAN](./can.md)
-
-There is no special mode required to update configuration values, update settings messages can be sent at any time (besides a fatal error state). 
+Parameters are changed with CAN or USB messages, see [Parameters](./can.md#parameters). No special mode is needed, parameters can be changed while the device is running.
 
 !!! Note
-    When a value is updated using a CAN or USB the value is immediately changed in the dingoPDM firmware
+    A changed value is used immediately, but is not saved over a power cycle.
 
-    But, the value will not persist over a power cycle
+    Send a [Burn](./can.md#burn) to save the configuration to memory.
 
-    To keep the updated value send a Burn message to write the new configuration to FRAM
+A new Base ID is used right away. A new CAN bitrate is only used after a [Restart](./can.md#restart) (or power cycle), Burn before restarting or the change is lost.
 
 ## Write
 
-To reduce the number of writes to FRAM the configuration is not written to FRAM on configuration changes. 
-
-The updated value is immediately changed in the dingoPDM firmware but a Burn message must be received to write the new configuration to FRAM
-
-The [Burn](./can.md#burn) message is the only way to trigger a write of the current configuration. 
+To reduce memory writes, the configuration is only written when a [Burn](./can.md#burn) message is received.
 
 Write sequence:
 
-1. Check the FRAM I2C communication and chip IDs (manufacturer and product ID)
+1. Check the FRAM ID (dingoPDM)
 2. Write the configuration starting at address 0
-3. Calculate the checksum of the current configuration
-4. Write the checksum to the memory address immediatley following the end of the configuration
-5. Send the write result out on the Burn response message (0 = fail, 1 = success)
-    
-## Read Failure
-
-If checking I2C communication and chip IDs fails dingoPDM enters the fatal error state and will not go into run.
-
-If any of the other read steps fail:
-
-- Check for I2C errors
-    - Errors = true, go to the fatal error state
-- Write the firmware default configuration to FRAM
-    - If this fails, check for I2C errors again:
-        - Errors = true, go to the fatal error state
-    - If this succeeds, go to the fatal error state
-
-!!! Info
-    Writing the firmware default configuration on a failure allows dingoPDM to recover from a firmware configuration change. 
-
-    Some firmware updates include a change to the configuration struct which means the configuration stored in FRAM no longer matches what the firmware expects.
-
-    On the next power cycle, FRAM will contain the correct memory values and will pass the version and CRC checks but the configuration will be the default blank configuration.
-
-    Write the new desired configuration with the updated format to the dingoPDM using DingoConfigurator.
+3. Calculate the CRC32 of the configuration
+4. Write the CRC32 right after the configuration
+5. Send the result in the Burn response (`1` = success, `0` = fail)

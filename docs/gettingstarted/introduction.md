@@ -8,7 +8,7 @@ dingoElectronics is a project to build open source automotive electronics.
 The project includes:
 
 - [dingoPDM](../dingopdm/introduction.md) and [dingoPDM-Max](../dingopdm/introduction.md)
-    - Power distributions modules 
+    - Power distribution modules
 - [dingoFW](../dingofw/introduction.md)
     - Firmware used for all of the devices
 - [dingoConfig](../dingoconfig/introduction.md)
@@ -19,6 +19,17 @@ The project includes:
     - LIN to CAN gateway device
 - [Custom Devices](../custom/introduction.md)
     - Custom devices created by others that utilize dingoFW and dingoConfig
+
+## Quick Start
+
+1. Download and run [dingoConfig](../dingoconfig/introduction.md#installation)
+2. Check for a newer firmware release and [update the firmware](../dingofw/updating.md) if needed
+3. Wire the device, see [Connections](../dingopdm/connections.md)
+4. Connect with USB or a USB to CAN [adapter](../dingoconfig/adapters.md)
+5. [Add the device](../dingoconfig/devices.md#adding-a-device) in dingoConfig (default Base ID `0x0DE`)
+6. Set up the outputs, inputs and logic, see [dingoPDM Configuration](../dingoconfig/dingopdm.md)
+7. `Write`, then `Burn` to save the settings on the device
+8. Save a [config file](../dingoconfig/configfiles.md) as a backup
 
 ## User Locations
 
@@ -56,7 +67,7 @@ The latest releases can be found on the Releases page for each repo:
 !!! Note
     Devices are shipped with the latest firmware release installed at the time of shipping, but new firmware is released frequently. 
 
-    Check the Releases page for a new release when receiving the device and follow the [Firwmare Updating](https://corygrant.github.io/dingoElec/dingofw/updating/) instructions. 
+    Check the Releases page for a new release when receiving the device and follow the [Firmware Updating](../dingofw/updating.md) instructions. 
 
 ### Store
 
@@ -93,49 +104,9 @@ See link at the bottom right of the page
 !!! info
     If this project helps you in any way, I'd appreciate a message!
 
-## Project Status
+## Contributing 
 
-- :green_square: : Complete
-- :yellow_square: : In Progess
-- :red_square: : Not Started
-
-| Recent Open Items                   | Status          |
-| ----------------------------------- | --------------- |
-| Finish case design                  | :green_square:  |
-| Test thermal performance            | :green_square:  |
-| Support USB C to C cables           | :green_square:  |
-| Develop dingoPDM-Max                | :green_square:  |
-| Finish documentation                | :yellow_square: |
-| Add device sleep                    | :green_square:  |
-| Add verbose error handling          | :green_square:  |
-| Add keypad support                  | :green_square:  |
-| Add PWM output support              | :green_square:  |
-| Switch-less bootloader              | :green_square:  |
-| Add soft HMI buttons                | :green_square:  |
-| Finish plots in software            | :yellow_square: |
-| Move to ChibiOS                     | :green_square:  |
-| Move to web based UI                | :green_square:  |
-| Move all devices to common firmware | :green_square:  |
-
-## Documentation Status
-
-???+ Note
-
-    Any help with the documentation is always welcome. 
-    
-    If you're familiar with git, submit a PR with your updates. 
-    
-    If not, you can message me the updates/additions on Discord and I can make the changes. 
-
-    Markdown preferred, but not required. 
-
-
-- :yellow_square: : Needs to be updated
-- :red_square: : Does not exist
-
-| Section                             | Status          | Notes                      |
-| ----------------------------------- | --------------- | -------------------------- |
-| [Custom](../custom/introduction.md) | :yellow_square: | Custom device instructions |
+See the [contributing guide](https://github.com/corygrant/dingoElec/blob/main/CONTRIBUTING.md).
 
 ## Disclaimer
 

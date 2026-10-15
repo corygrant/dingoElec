@@ -1,7 +1,19 @@
-Building dingoPDM firmware locally on your machine
+# Build
+
+Building dingoFW locally on your machine
 
 !!! Note
-    dingoPDM firmware is already pre-built and ready for use on [the release page](https://github.com/corygrant/DingoPDM_FW/releases)
+    dingoFW is already pre-built and ready for use on [the release page](https://github.com/corygrant/dingoFW/releases)
+
+## Get the Code
+
+ChibiOS is a git submodule, clone with `--recurse-submodules`:
+
+```bash
+git clone --recurse-submodules https://github.com/corygrant/dingoFW.git
+```
+
+If you already cloned without it, run `git submodule update --init` in the repo folder.
 
 ## Linux
 
@@ -79,11 +91,27 @@ Use MSYS2 to add make and other Linux tools to Windows
 - Check by running `pacman -V`
     - Note the capital -V
     - If you receive an error, restart your terminal (or VS Code if using VS Code)
-- Install make using `pacman -S make'
+- Install make using `pacman -S make`
+
+## Command Line
+
+Build with `make` and select the board with `BOARD`:
+
+```bash
+make -j16 BOARD=dingopdm_v7
+```
+
+| Board            | Device       |
+| ---------------- | ------------ |
+| `dingopdm_v7`    | dingoPDM     |
+| `dingopdmmax_v1` | dingoPDM-Max |
+| `canboard_v2`    | CANBoard     |
+
+Run `make clean` before switching boards. The output files (`.hex`, `.bin`, `.elf`) are in the `build/` folder.
 
 ## VS Code
 
-The dingoPDM firmware repo includes VS Code settings to make working with the firmware easier. 
+The dingoFW repo includes VS Code settings to make working with the firmware easier. 
 
 ### Setup
 
@@ -101,7 +129,7 @@ The path to your ARM toolchain must be set in these settings files so VS Code ca
 
 To build the firmware in VS Code, press ++ctrl+shift+b++
 
-VS Code will ask you which board type to build for, select the board type and press ++enter++
+VS Code will ask you which board type to build for (`dingopdm_v7`, `dingopdmmax_v1` or `canboard_v2`), select the board type and press ++enter++
 
 ### Debug
 

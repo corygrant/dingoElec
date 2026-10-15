@@ -12,7 +12,7 @@ This guide covers every dingoElectronics project. Each code repo also has a shor
 
 - **Check [the project board](https://github.com/users/corygrant/projects/4) first.** It lists the features and bugs that are already planned or being worked on. If your idea or bug is already there, comment on that item instead of opening a new issue.
 - **Bugs:** open an issue in the repo where the bug shows up. Include the firmware version, the dingoConfig version, the device and board revision, the adapter you used, and the steps to reproduce it. A CAN log or a config file helps a lot.
-- **Features:** open an issue or ask on Discord (the link is in the README) before you write a large change. For longer-term plans, see [the roadmap](roadmap/roadmap.md).
+- **Features:** open an issue or ask on Discord (the link is in the README) before you write a large change. For longer-term plans, see [the roadmap](dev/roadmap/roadmap.md).
 - **Small fixes** like typos, docs or obvious bugs can go straight to a PR.
 
 ## Branches and releases

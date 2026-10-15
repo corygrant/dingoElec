@@ -1,4 +1,4 @@
-# Functionality
+# Wipers
 
 dingoPDM includes the ability to control a simple DC wiper motor. 
 
@@ -8,7 +8,7 @@ To wire the wiper motor to the dingoPDM, a [WiperModule](https://dingo-electroni
 
 The relays are used to correctly isolate the slow and fast motor windings. 
 
-See [Wiper Connections](../hardware/connections.md#wipers) for more information. 
+See [Wiper Connections](../dingopdm/connections.md#wipers) for more information. 
 
 ## Outputs
 
@@ -176,6 +176,33 @@ Unused inputs:
 - `Slow In`
 - `Fast In`
 - `Inter In`
+
+## Speed Map
+
+In `IntIn` and `MixIn` modes, each `Speed In` value (`0` to `7`) is mapped to a speed:
+
+| Value | Speed            |
+| :---: | ---------------- |
+| 0     | `Park`           |
+| 1     | `Slow`           |
+| 2     | `Fast`           |
+| 3     | `Intermittent 1` |
+| 4     | `Intermittent 2` |
+| 5     | `Intermittent 3` |
+| 6     | `Intermittent 4` |
+| 7     | `Intermittent 5` |
+| 8     | `Intermittent 6` |
+
+`Intermittent n` uses the pause time set in `Intermit n` (default 1 to 6 seconds).
+
+Default speed map:
+
+| Speed In | 0       | 1       | 2       | 3       | 4       | 5       | 6      | 7      |
+| -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------ | ------ |
+| Speed    | Inter 1 | Inter 2 | Inter 3 | Inter 4 | Inter 5 | Inter 6 | Slow   | Fast   |
+
+!!! Warning
+    In `IntIn` mode the default map has no `Park`, so the motor never stops. Set one value to `Park`.
 
 ## States
 

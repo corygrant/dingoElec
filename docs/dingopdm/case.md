@@ -71,6 +71,8 @@ As an alternative, Amphenol Radlok 5.7mm connectors can be used for the battery 
 
 Models of the baseplate, heatsink and case can be found here:
 
-[**Case STEP Files**](https://github.com/corygrant/DingoPDM/tree/master/Export/V7.4/Case)
+[**Case STEP Files**](https://github.com/corygrant/dingoPDM/tree/master/Export/V7.5/Case)
 
-[**Complete STEP File**](https://github.com/corygrant/DingoPDM/tree/master/Export/V7.4) (DingoPDM_V7_4.step)
+[**Complete STEP File**](https://github.com/corygrant/dingoPDM/tree/master/Export/V7.5) (DingoPDM_V7_5.step)
+
+dingoPDM-Max: [**dingoPDM-Max STEP Files**](https://github.com/corygrant/dingoPDM-Max/tree/main/Export/V1.2)

@@ -109,7 +109,6 @@ Some of the design constraints/decisions:
 - dingoPDM-Max `v1`
 - CANBoard `v2`
 - LINBoard `v1`
-- PT-DPDM `v1`
 
 ## New Hardware (To Add)
 - dingoIO `v1`

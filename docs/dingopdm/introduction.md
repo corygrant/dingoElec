@@ -13,9 +13,10 @@ PDMs can be used in place of fuses, circuit breakers and relays, including flash
 Each output channel of the PDM:
  
 - Measures the active current and reacts by turning the output off if the current exceeds the limit
+- Allows a higher inrush current when first turned on
 - Automatically resets after a cool down period a maximum number of times
 - Can be turned on/off using various input sources
-- Can be on constantly or with Pulse Width Modulation(PWM)
+- Can be on constantly or with Pulse Width Modulation (PWM)
 
 This makes PDMs a very flexible solution when designing the power system in any automotive application. 
 
@@ -25,57 +26,70 @@ A key feature of any PDM is flexible configuration to match the target applicati
 
 To meet these needs, dingoPDM includes configurable:
 
-- Outputs
+- Outputs, including paired outputs for higher current loads
 - Digital inputs
-- CAN inputs
-- Virtual logic inputs
-- Counters
-- Logic conditions
+- CAN inputs (32), read any signal from any CAN message
+- CAN outputs (32), send any value on CAN
+- Virtual logic inputs (16)
+- Counters (4)
+- Logic conditions (32)
 - Wipers
-- Flashers
+- Flashers (4)
 - Starter disable
 
-All settings on the dingoPDM can be controller by the custom Windows application [DingoConfigurator](../software/introduction.md) 
+All settings on the dingoPDM are configured with [dingoConfig](../dingoconfig/introduction.md), which runs on Windows, Linux and macOS. See [dingoPDM Configuration](../dingoconfig/dingopdm.md) for every setting.
 
 dingoPDM also includes:
 
-- Cyclic CAN status messages (TX)
+- Cyclic CAN status messages (TX), see [CAN](../dingofw/can.md#cyclic-messages)
 - Pulse Width Modulation (PWM)
-    - Configurable base frequency
+    - Configurable frequency (up to 400Hz)
     - Fixed or variable duty cycle
-- CAN keypad support (work in progress)
-    - Blink Marine
-    - Grayhill
+    - Soft start
+- CAN keypad support, up to 2 keypads
+    - [Blink Marine and Grayhill](../dingofw/keypad.md)
 - Battery voltage measurement
-- Internal temperature sensor
+- Board temperature sensor
+- Low power [sleep](../dingofw/sleep.md)
 - Status LEDs
 
 ## Configuration
 
 The dingoPDM configuration can be accessed using:
 
-- USB-C connected directly to the device, one at a time
-- A CAN connection to one or many dingoPDMs at once using a USB to CAN adapter such as [USB2CAN](https://github.com/corygrant/USB2CAN_HW)
+- USB-C connected directly to the device. With `Connect USB to CAN` enabled (default), the USB port also works as a USB to CAN adapter, so every device on the CAN bus can be configured through it
+- A CAN connection to one or many devices at once using a USB to CAN adapter such as [USB2CAN](https://github.com/corygrant/USB2CAN_HW), see [Adapters](../dingoconfig/adapters.md)
 
-Configuration reading/writing and status monitoring are all done using the custom built Windows application [DingoConfigurator](../software/introduction.md) 
+Configuration reading/writing and status monitoring are all done using [dingoConfig](../dingoconfig/introduction.md)
 
 ## Wiring Example
 
 ![ExampleWiring](../images/dingoPDMExampleWiringWhite.svg#only-dark){ .off-glb }
 ![ExampleWiring](../images/dingoPDMExampleWiringBlack.svg#only-light){ .off-glb }
 
-## Changing CAN ID
+## Changing the CAN Base ID
 
-The CAN Base ID default value is 2000. 
+The default CAN Base ID is `0x0DE` (222). Each device on the bus uses the IDs from `Base ID` to `Base ID + 28`, see [CAN IDs](../dingofw/can.md#ids).
 
-To change this, modify the value in the [DeviceTree](../software/devicetree.md) and press `Update` and then `Burn` to save the setting. 
+To change the Base ID in dingoConfig:
 
-On the next power up, the CAN Base ID will be updated. 
+1. Connect to the device
+2. On the `Devices` page, press `Modify Device` and enter the new Base ID. dingoConfig sends the new Base ID to the device and starts using it
+3. Open the device and press `Burn` to save the new Base ID on the device
 
-![Full1](images/Full1.jpg)
+To change the CAN bitrate:
 
-![Full2](images/Full2.jpg)
+1. On the device `Configuration` tab, `Device` section, change `Bitrate`
+2. Press `Write`, then `Burn`
+3. Press `Reset` (or cycle power), the device starts using the new bitrate
+4. Reconnect the [adapter](../dingoconfig/adapters.md) at the new bitrate (not needed for USB)
 
-![PCB1](images/PCB1.jpg)
+## Images
 
-![PCB2](images/PCB2.jpg)
+![Full1](../images/Full1.jpg)
+
+![Full2](../images/Full2.jpg)
+
+![PCB1](../images/PCB1.jpg)
+
+![PCB2](../images/PCB2.jpg)

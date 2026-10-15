@@ -7,6 +7,6 @@ dingoElectronics is a project to build open source automotive electronics.
 - **[dingoPDM](./dingopdm/introduction.md)**
 - **[dingoConfig](./dingoconfig/introduction.md)**
 - **[dingoFW](./dingofw/introduction.md)**
-- **[CANboard](./canboard/introduction.md)**
-- **[LINboard](./linboard/introduction.md)**
+- **[CANBoard](./canboard/introduction.md)**
+- **[LINBoard](./linboard/introduction.md)**
 - **[Custom](./custom/introduction.md)**

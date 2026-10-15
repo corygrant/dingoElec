@@ -34,8 +34,8 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode  
-repo_url: https://github.com/corygrant/dingoPDM
-repo_name: corygrant/dingoPDM
+repo_url: https://github.com/corygrant/dingoElec
+repo_name: corygrant/dingoElec
 extra:
   generator: false
   social:
@@ -89,6 +89,7 @@ nav:
     - Connections: 'dingopdm/connections.md'
     - Case: 'dingopdm/case.md'
     - Thermal: 'dingopdm/thermal.md'
+    - Testing: 'dingopdm/checklist.md'
   - dingoConfig:
     - Introduction: 'dingoconfig/introduction.md'
     - Devices: 'dingoconfig/devices.md'
@@ -96,14 +97,14 @@ nav:
     - Config Files: 'dingoconfig/configfiles.md'
     - CAN Log: 'dingoconfig/canlog.md'
     - Messages: 'dingoconfig/messages.md'
-    - dingoPDMs: 'dingoconfig/dingopdm.md'
-    - CANBoard: 'dingoconfig/canboard.md'
+    - dingoPDM Configuration: 'dingoconfig/dingopdm.md'
+    - CANBoard Configuration: 'dingoconfig/canboard.md'
     - DBC Device: 'dingoconfig/dbcdevice.md'
     - Keypads: 'dingoconfig/keypads.md'
   - dingoFW:
     - Introduction: 'dingofw/introduction.md'
     - Design: 'dingofw/design.md'
-    - CAN: 'dingofw/can.md'
+    - CAN Protocol: 'dingofw/can.md'
     - LEDs: 'dingofw/leds.md' 
     - Wipers: 'dingofw/wipers.md'
     - Keypad: 'dingofw/keypad.md'
