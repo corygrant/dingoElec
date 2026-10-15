@@ -39,6 +39,34 @@ The two repos are linked by the CAN protocol. If you change a message, a paramet
 2. Update the DBC builder in `dingoFW/dbc/dbc_builder/` if any CAN messages changed.
 3. Update the matching page in `dingoElec/docs/` (for example `dingofw/can.md` or `dingoconfig/messages.md`).
 
+## Testing the docs locally
+
+The docs site is built with [MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). Preview your changes locally before opening a PR.
+
+Install Python 3, then from the root of the dingoElec repo:
+
+```bash
+# Create and activate a virtual environment (one time)
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+
+# Install the same packages CI uses (one time)
+pip install mkdocs-material mkdocs-glightbox mkdocs-macros-plugin mkdocs-charts-plugin
+
+# Start the live preview server
+mkdocs serve
+```
+
+Open `http://127.0.0.1:8000` in your browser. The page reloads every time you save a file in `docs/` or `mkdocs.yml`. Press `Ctrl+C` to stop the server.
+
+Before you open a PR, run a full build and fix any warnings (broken links, missing pages):
+
+```bash
+mkdocs build
+```
+
+The site is built into `site/`, which is ignored by git. Next time, just activate the virtual environment and run `mkdocs serve`.
+
 ## Pull requests
 
 - Keep each PR to one change. Split up unrelated fixes.
