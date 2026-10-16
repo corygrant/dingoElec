@@ -205,6 +205,38 @@ Flashers turn on and off while their input is on, for turn signals and hazards.
 
 Use the flasher variable (`Flasher n`) as the output input.
 
+## Timers
+
+Timers turn their variable (`Timer n`) on or off after a set time. Useful for courtesy lights, delayed fans or a timed shutdown.
+
+| Setting     | Description |
+| ----------- | ----------- |
+| Enabled     | Timer is used |
+| Input       | Variable that starts the timer |
+| Reset Input | Variable that clears the timer. While it is on the timer is off and stays cleared |
+| Mode        | See below |
+| Time        | Preset time (0 to 600000 ms) |
+
+| Mode                  | Timer variable |
+| --------------------- | -------------- |
+| On delay              | Turns on once the input has been on for the time. Turns off as soon as the input turns off |
+| Off delay             | Turns on with the input. Stays on for the time after the input turns off |
+| Pulse (retriggerable) | Each time the input turns on, turns on for the time. Turning the input on again restarts the time |
+| Pulse (one shot)      | Each time the input turns on, turns on for the time. The input is ignored until the pulse ends |
+
+!!! Note
+    An on delay timer starts timing even if its input is already on at power up or when the reset input turns off. The pulse modes only start when the input turns on, so an input that is already on at power up does not start a pulse.
+
+The Timers grid also shows whether each timer is running and its elapsed time.
+
+!!! Example
+    Keep the interior light on for 30 seconds after the door closes.
+
+    - Input = `Digital In 1` (door switch)
+    - Mode = `Off delay`
+    - Time = `30000`
+    - Output 5 (interior light) Input = `Timer 1`
+
 ## Wiper
 
 See [Wipers](../dingofw/wipers.md) for the wiper modes, inputs and speed map.

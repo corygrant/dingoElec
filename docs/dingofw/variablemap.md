@@ -1,13 +1,13 @@
 # Variable Map
 
-Every value inside the device is a numbered **variable**. Settings that take an input (output control, virtual inputs, conditions, wipers, flashers, CAN outputs, etc.) point at a variable by its index.
+Every value inside the device is a numbered **variable**. Settings that take an input (output control, virtual inputs, conditions, timers, wipers, flashers, CAN outputs, etc.) point at a variable by its index.
 
 In dingoConfig, variables are picked from a list by name, so the index only matters when [writing parameters directly](./can.md#parameters).
 
 Variables are used to:
 
 - Turn outputs on/off
-- Build logic with virtual inputs, conditions and counters
+- Build logic with virtual inputs, conditions, counters and timers
 - Control wipers, flashers and starter disable
 - Set keypad button LEDs
 - Send values out on CAN with CAN outputs
@@ -32,6 +32,7 @@ Variables are used to:
     10. Counters
     11. Wiper (6: slow, fast, park, intermittent, wash, swipe)
     12. Keypads (26 each: 20 buttons, 2 dials, 4 analog inputs)
+    13. Timers
 
 ## dingoPDM
 
@@ -254,6 +255,14 @@ Variables are used to:
 | 214 | Keypad 2 Analog 2 |
 | 215 | Keypad 2 Analog 3 |
 | 216 | Keypad 2 Analog 4 |
+| 217 | Timer 1 |
+| 218 | Timer 2 |
+| 219 | Timer 3 |
+| 220 | Timer 4 |
+| 221 | Timer 5 |
+| 222 | Timer 6 |
+| 223 | Timer 7 |
+| 224 | Timer 8 |
 
 ## dingoPDM-Max
 
@@ -462,6 +471,14 @@ Variables are used to:
     | 198 | Keypad 2 Analog 2 |
     | 199 | Keypad 2 Analog 3 |
     | 200 | Keypad 2 Analog 4 |
+    | 201 | Timer 1 |
+    | 202 | Timer 2 |
+    | 203 | Timer 3 |
+    | 204 | Timer 4 |
+    | 205 | Timer 5 |
+    | 206 | Timer 6 |
+    | 207 | Timer 7 |
+    | 208 | Timer 8 |
 
 ## CANBoard
 

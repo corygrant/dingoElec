@@ -33,6 +33,7 @@ To meet these needs, dingoPDM includes configurable:
 - Virtual logic inputs (16)
 - Counters (4)
 - Logic conditions (32)
+- Timers (8)
 - Wipers
 - Flashers (4)
 - Starter disable

@@ -168,6 +168,9 @@ dingoPDM-Max has 4 outputs, the bytes for outputs 5 to 8 are always `0`.
 | 24  | Base ID + 26  |                | K1B    | K1B    | K1B    | K2B    | K2B    | K2B    | 0      | 0      |
 | 25  | Base ID + 27  |                | K1D1   | K1D1   | K1D2   | K1D2   | 0      | 0      | 0      | 0      |
 | 26  | Base ID + 28  |                | K2D1   | K2D1   | K2D2   | K2D2   | 0      | 0      | 0      | 0      |
+| 27  | Base ID + 29  |                | TO     | TR     | 0      | 0      | 0      | 0      | 0      | 0      |
+| 28  | Base ID + 30  |                | TE1    | TE1    | TE2    | TE2    | TE3    | TE3    | TE4    | TE4    |
+| 29  | Base ID + 31  |                | TE5    | TE5    | TE6    | TE6    | TE7    | TE7    | TE8    | TE8    |
 
 - **Msg 0**
     - `DI` - Digital inputs
@@ -221,6 +224,12 @@ dingoPDM-Max has 4 outputs, the bytes for outputs 5 to 8 are always `0`.
     - `K2B` - Keypad 2 buttons, bit 24 = button 1 ... bit 43 = button 20
 - **Msg 25, 26** - Sent when keypad 1 / keypad 2 is enabled
     - `KxDn` - Keypad _x_ dial _n_ value, 16 bits (2 dials per keypad)
+- **Msg 27** - Sent when any timer is enabled
+    - `TO` - Timer outputs, bit 0 = timer 1 ... bit 7 = timer 8
+    - `TR` - Timers running (timing), bit 8 = timer 1 ... bit 15 = timer 8
+- **Msg 28, 29** - Sent when any timer is enabled
+    - `TEn` - Timer _n_ elapsed time, 16 bits, 10ms per bit (s × 100)
+    - Held at the preset time once it is reached, `0` when the timer is not running
 
 ### CANBoard
 
@@ -287,6 +296,7 @@ Parameters are read and written on `Base ID + 1`. The device responds on `Base I
 | `0x1700 + n`     | [Flashers](#flashers-0x1700) |
 | `0x1800`         | [Starter disable](#starter-disable-0x1800) |
 | `0x1900`         | [Wiper](#wiper-0x1900) |
+| `0x1A00 + n`     | [Timers](#timers-0x1a00) |
 | `0x2000 + n`     | [CAN outputs](#can-outputs-0x2000) |
 | `0x2100 + n`     | [Digital outputs](#digital-outputs-0x2100) |
 | `0x2200 + n`     | [Analog inputs](#analog-inputs-0x2200) |
@@ -439,6 +449,16 @@ Variable inputs (`Var`) are [variable map](./variablemap.md) indexes.
 | 11      | Wash wipe cycles  | UInt8  | 3 | 0 - 10 | |
 | 12 - 19 | Speed map 0 - 7   | Enum   | | 0 - 8 | See [Speed Map](./wipers.md#speed-map) |
 | 20 - 25 | Intermittent time 1 - 6 | UInt16 | 1000 - 6000 | 0 - 30000 | ms |
+
+#### Timers `0x1A00`
+
+| Sub | Name        | Type   | Default | Range | Notes |
+| :-: | ----------- | ------ | ------- | ----- | ----- |
+| 0   | Enabled     | Bool   | 0 | | |
+| 1   | Input       | Var    | 0 | | |
+| 2   | Reset input | Var    | 0 | | Level, timer is cleared while on |
+| 3   | Mode        | Enum   | 0 | 0 - 3 | 0 = On delay, 1 = Off delay, 2 = Pulse (retriggerable), 3 = Pulse (one shot) |
+| 4   | Time        | UInt32 | 1000 | 0 - 600000 | ms |
 
 #### CAN Outputs `0x2000`
 

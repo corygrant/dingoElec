@@ -44,7 +44,7 @@ The device thread runs every `2ms` and updates everything in this order, so outp
 2. Digital inputs, analog inputs, CAN input timeouts
 3. Virtual inputs
 4. Wiper, starter disable
-5. Flashers, counters, conditions
+5. Flashers, counters, conditions, timers
 6. Keypads
 7. Outputs, digital outputs, CAN outputs
 
@@ -138,6 +138,7 @@ dingoFW files are split between ChibiOS, OpenOCD and dingoFW files.
 | `profet`                 | Output control, current measurement, overcurrent, paired outputs |
 | `pwm`                    | Output PWM and soft start |
 | `starter`                | Starter disable |
+| `timer`                  | Timers |
 | `virtual_input`          | Virtual inputs |
 | `neopixels`              | Addressable LEDs |
 | `keypad/`                | Blink Marine and Grayhill keypads |
